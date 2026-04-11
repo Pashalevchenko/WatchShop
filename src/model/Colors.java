@@ -4,7 +4,8 @@ public enum Colors {
     BLACK("Black"),
     WHITE("White"),
     RED("Red"),
-    BLUE("Blue");
+    BLUE("Blue"),
+    AQUA("Aqua");
 
     private final String description;
 
@@ -15,5 +16,4 @@ public enum Colors {
     public String getDescription() {
         return description;
     }
-
 }

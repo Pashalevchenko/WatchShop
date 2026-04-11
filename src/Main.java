@@ -1,21 +1,42 @@
+import controller.WatchHopController;
+import model.Colors;
 import model.Watch;
 import service.WatchService;
 import view.Display;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        WatchService watchService = new WatchService();
         Display display = new Display();
 
+        WatchHopController watchHopController = new WatchHopController(display);
 
-        List<Watch> watches = watchService.getWatches();
+        Scanner sc = new Scanner(System.in);
 
-        display.print(watches);
+        int userNum = -1;
+        int userSort = -1;
 
-
+        while (userNum != 0){
+            display.displayManu();
+            userNum = sc.nextInt();
+            switch (userNum){
+                case (1) :
+                    watchHopController.displayAllWatches();
+                    break;
+                case (2) :
+                    watchHopController.sortWatch(userSort, sc);
+                    break;
+                case (3) :
+                    watchHopController.getTotalSum();
+                    break;
+                case (4) :
+                    watchHopController.addWatch(sc);
+            }
+        }
     }
 }

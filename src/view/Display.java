@@ -15,4 +15,20 @@ public class Display {
             System.out.println("-----------------------------------------------------");
         }
     }
+
+    public void displayManu (){
+        System.out.println("Press 1-4 to go ahead, 0 to quit");
+        System.out.println("1 - Print all watches | 2 - sort by... | 3 - sum of all prices | 4 - add new product");
+    }
+
+    public void displaySortManu(){
+        System.out.println("Press 1-3 to go ahead, 0 to return");
+        System.out.println("1 - sort by price | 2 - sort by color | 3 - sort by Date");
+    }
+
+    public void displayTotalSum(double totalSum){
+        System.out.println("Total sum is: " + totalSum);
+    }
+
+
 }
