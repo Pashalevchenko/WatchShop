@@ -1,15 +1,16 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Watch {
     private String model;
     private double price;
     private Colors color;
-    private Date dateOfReceipt;
+    private LocalDate dateOfReceipt;
     private String description;
 
-    public Watch(String model, double price, Colors color, Date dateOfReceipt, String description) {
+    public Watch(String model, double price, Colors color, LocalDate dateOfReceipt, String description) {
         this.model = model;
         this.price = price;
         this.color = color;
@@ -41,11 +42,11 @@ public class Watch {
         this.color = color;
     }
 
-    public Date getDateOfReceipt() {
+    public LocalDate getDateOfReceipt() {
         return dateOfReceipt;
     }
 
-    public void setDateOfReceipt(Date dateOfReceipt) {
+    public void setDateOfReceipt(LocalDate dateOfReceipt) {
         this.dateOfReceipt = dateOfReceipt;
     }
 

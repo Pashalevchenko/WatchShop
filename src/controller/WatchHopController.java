@@ -9,12 +9,13 @@ public class WatchHopController {
     WatchService watchService;
     Display display;
 
-    public WatchHopController(Display display){
+    public WatchHopController(){
         this.watchService = new WatchService();
-        this.display = display;
+        this.display = new Display();
     }
 
-    public void sortWatch(int userSort, Scanner sc){
+    public void sortWatch(Scanner sc){
+        int userSort = -1;
         while (userSort != 0){
             display.displaySortManu();
             userSort = sc.nextInt();
@@ -40,4 +41,5 @@ public class WatchHopController {
     public void addWatch(Scanner sc){
         watchService.addWatch(sc);
     }
+
 }

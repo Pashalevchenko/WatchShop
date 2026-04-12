@@ -14,12 +14,11 @@ public class Main {
     public static void main(String[] args) {
         Display display = new Display();
 
-        WatchHopController watchHopController = new WatchHopController(display);
+        WatchHopController watchHopController = new WatchHopController();
 
         Scanner sc = new Scanner(System.in);
 
         int userNum = -1;
-        int userSort = -1;
 
         while (userNum != 0){
             display.displayManu();
@@ -29,7 +28,7 @@ public class Main {
                     watchHopController.displayAllWatches();
                     break;
                 case (2) :
-                    watchHopController.sortWatch(userSort, sc);
+                    watchHopController.sortWatch(sc);
                     break;
                 case (3) :
                     watchHopController.getTotalSum();
