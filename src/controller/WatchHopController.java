@@ -2,7 +2,6 @@ package controller;
 
 import service.WatchService;
 import view.Display;
-
 import java.util.Scanner;
 
 public class WatchHopController {

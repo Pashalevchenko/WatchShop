@@ -1,11 +1,5 @@
 import controller.WatchHopController;
-import model.Colors;
-import model.Watch;
-import service.WatchService;
 import view.Display;
-
-import java.util.Date;
-import java.util.List;
 import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
