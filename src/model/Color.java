@@ -1,6 +1,6 @@
 package model;
 
-public enum Colors {
+public enum Color {
     BLACK("Black"),
     WHITE("White"),
     RED("Red"),
@@ -9,7 +9,7 @@ public enum Colors {
 
     private final String description;
 
-    Colors(String description) {
+    Color(String description) {
         this.description = description;
     }
 

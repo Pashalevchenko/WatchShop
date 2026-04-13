@@ -1,57 +1,55 @@
 package service;
 
-import model.Colors;
+import model.Color;
 import model.Watch;
 import view.Display;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Comparator;
 
 public class WatchService {
 
      private final List<Watch> watches = new ArrayList<>();
      private final Display display = new Display();
+     private final InputHandler input = new InputHandler();
 
     public WatchService() {
-        watches.add( new Watch("Batman", 230.5, Colors.BLACK, LocalDate.of(2026, 4, 11), "Be real Dark knight"));
-        watches.add( new Watch("Xiaomi", 200, Colors.WHITE, LocalDate.of(2025, 8, 22), "Top for this price"));
-        watches.add( new Watch("s-class", 10000.4, Colors.BLUE, LocalDate.of(2026, 1, 1), "Do not need description for this watch"));
-        watches.add(new Watch("BadB", 300.4, Colors.AQUA, LocalDate.of(2024, 7, 25), "For real bad boys"));
-        watches.add( new Watch("g-shock", 310.4, Colors.RED, LocalDate.of(2022, 2, 24), "Best solution for active vacation"));
-        watches.add(new Watch("rolex", 999999, Colors.BLACK, LocalDate.of(2023, 7, 26), "For top"));
+        watches.add( new Watch("Batman", new BigDecimal("230.5"), Color.BLACK, LocalDate.of(2026, 4, 11), "Be real Dark knight"));
+        watches.add( new Watch("Xiaomi", new BigDecimal("230.5"), Color.WHITE, LocalDate.of(2025, 8, 22), "Top for this price"));
+        watches.add( new Watch("s-class", new BigDecimal("10000.4"), Color.BLUE, LocalDate.of(2026, 1, 1), "Do not need description for this watch"));
+        watches.add(new Watch("BadB", new BigDecimal("300.4"), Color.AQUA, LocalDate.of(2024, 7, 25), "For real bad boys"));
+        watches.add( new Watch("g-shock", new BigDecimal("310.4"), Color.RED, LocalDate.of(2022, 2, 24), "Best solution for active vacation"));
+        watches.add(new Watch("rolex", new BigDecimal("999999"), Color.BLACK, LocalDate.of(2023, 7, 26), "For top"));
     }
 
 
-    public void addWatch(Scanner sc){
-        sc.nextLine();
-        System.out.println("select model: ");
-        String model = sc.nextLine();
+    public void addWatch(){
+        String model = input.readString("select model: ");
 
-        System.out.println("select price separated by , : ");
-        double price = sc.nextDouble();
+        BigDecimal price = input.readBigDecimal("select price separated by . : ");
 
-        System.out.println("select Color (Black, White, Red, Blue, Aqua): ");
-        String color = sc.next();
+        String color = input.readString("select Color (Black, White, Red, Blue, Aqua): ");
 
-        sc.nextLine();
-        System.out.println("select description: ");
-        String description = sc.nextLine();
+        String description = input.readString("select description: ");
 
         watches.add(new Watch(
                 model,
                 price,
-                Colors.valueOf(color.trim().toUpperCase()),
+                Color.valueOf(color.trim().toUpperCase()),
                 LocalDate.now(),
                 description
         ));
     }
 
-    public void getSumOfPrice(){
-        double sum = 0;
+    public BigDecimal getSumOfPrice(){
+        BigDecimal sum = new BigDecimal(0);
         for (Watch watch : watches){
-            sum += watch.getPrice();
+            sum = sum.add(watch.getPrice());
         }
-        display.displayTotalSum(sum);
+        return sum;
     }
 
     public List<Watch> sortByPrice(){
@@ -68,7 +66,7 @@ public class WatchService {
     }
 
     public void displayAllWatches(){
-        display.print(watches);
+        display.printWatches(watches);
     }
 
 }

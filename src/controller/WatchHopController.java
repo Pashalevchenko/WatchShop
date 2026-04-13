@@ -1,44 +1,67 @@
 package controller;
 
+import service.InputHandler;
 import service.WatchService;
 import view.Display;
-import java.util.Scanner;
 
 public class WatchHopController {
     WatchService watchService;
     Display display;
+    InputHandler inputHandler;
 
     public WatchHopController(){
         this.watchService = new WatchService();
         this.display = new Display();
+        this.inputHandler = new InputHandler();
     }
 
-    public void sortWatch(Scanner sc){
-        int userSort = -1;
-        while (userSort != 0){
-            display.displaySortManu();
-            userSort = sc.nextInt();
-            switch (userSort){
-                case (1):
-                    display.print(watchService.sortByPrice());
+    public void runApp (){
+        int userNum;
+
+        while (true){
+            userNum = inputHandler.readInt("Press 1-4 to go ahead" + "\n" +
+                    "1 - Print all watches | 2 - sort by... | 3 - sum of all prices | 4 - add new product | 0 - quit" + "\n" +
+                    "Press: ");
+            switch (userNum){
+                case (1) :
+                    watchService.displayAllWatches();
                     break;
                 case (2) :
-                    display.print(watchService.sortByColor());
+                    sortWatch();
                     break;
                 case (3) :
-                    display.print(watchService.sortByDate());
+                    display.displayMessage("Total sum is: " +  watchService.getSumOfPrice());
                     break;
+                case (4) :
+                    watchService.addWatch();
+                    break;
+                case (0):
+                    return;
             }
         }
     }
-    public void displayAllWatches(){
-        watchService.displayAllWatches();
+
+    private void sortWatch(){
+        int userSort;
+        while (true){
+            userSort = inputHandler.readInt("Press 1-3 to go ahead, 0 to return" + "\n" +
+                    "1 - sort by price | 2 - sort by color | 3 - sort by Date | 0 - quit" + "\n" +
+                    "Press: ");
+            switch (userSort){
+                case (1):
+                    display.printWatches(watchService.sortByPrice());
+                    break;
+                case (2) :
+                    display.printWatches(watchService.sortByColor());
+                    break;
+                case (3) :
+                    display.printWatches(watchService.sortByDate());
+                    break;
+                case (0) :
+                    return;
+            }
+        }
     }
-    public void getTotalSum(){
-        watchService.getSumOfPrice();
-    }
-    public void addWatch(Scanner sc){
-        watchService.addWatch(sc);
-    }
+
 
 }

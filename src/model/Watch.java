@@ -1,15 +1,16 @@
 package model;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class Watch {
     private String model;
-    private double price;
-    private Colors color;
+    private BigDecimal price;
+    private Color color;
     private LocalDate dateOfReceipt;
     private String description;
 
-    public Watch(String model, double price, Colors color, LocalDate dateOfReceipt, String description) {
+    public Watch(String model, BigDecimal price, Color color, LocalDate dateOfReceipt, String description) {
         this.model = model;
         this.price = price;
         this.color = color;
@@ -25,19 +26,19 @@ public class Watch {
         this.model = model;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
-    public Colors getColor() {
+    public Color getColor() {
         return color;
     }
 
-    public void setColor(Colors color) {
+    public void setColor(Color color) {
         this.color = color;
     }
 
