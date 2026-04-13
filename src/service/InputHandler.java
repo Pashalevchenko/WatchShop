@@ -32,6 +32,4 @@ public class InputHandler {
     public BigDecimal readBigDecimal(String message){
         return new BigDecimal(readString(message));
     }
-
-
 }

@@ -25,7 +25,6 @@ public class WatchService {
         watches.add(new Watch("rolex", new BigDecimal("999999"), Color.BLACK, LocalDate.of(2023, 7, 26), "For top"));
     }
 
-
     public void addWatch(){
         String model = input.readString("select model: ");
 
@@ -68,6 +67,5 @@ public class WatchService {
     public void displayAllWatches(){
         display.printWatches(watches);
     }
-
 }
 
